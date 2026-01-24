@@ -1,6 +1,6 @@
 # For documentation see docs/installing-upgrading.md
 
-FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:25-jre-alpine
 
 RUN apk add --no-cache bash gettext
 
@@ -11,7 +11,7 @@ WORKDIR /rems
 
 ENTRYPOINT ["bash","./docker-entrypoint.sh"]
 
-ADD https://github.com/CSCfi/rems/releases/download/v2.38.1/rems.jar /rems/rems.jar
+ADD https://github.com/CSCfi/rems/releases/download/v2.39/rems.jar /rems/rems.jar
 COPY config.edn.template /rems/config/config.edn.template
 COPY theme/ /rems/theme
 
