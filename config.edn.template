@@ -25,6 +25,7 @@
  :enable-catalogue-tree false ; might be useful for a lot of items
  :catalogue-tree-show-matching-parents true
  :enable-autosave true
+ :enable-save-compaction true ; merge consecutive saves into one event
  :extra-stylesheets {:root "./" :files ["/theme/styles.css"]}
  :smtp {:host "${SMTP_HOST}" :user "${SMTP_USER}" :pass "${SMTP_PASSWORD}" :port 587 :tls true}
  :mail-from "${SMTP_SENDER}"
