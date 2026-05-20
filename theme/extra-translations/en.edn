@@ -3,6 +3,7 @@
      :login {:login [:img {:src "img/login.png" :height "50px"}]
              :intro [:div [:h5 "Dataset Permission Management"] [:p "REMS is a service for managing dataset permissions."]]
              :intro2 "" :text ""}
+     :applications {:events {:rejected "The Data Access Committee rejected the application"}}
      :email
       {:application-submitted
        {:message-to-handler
