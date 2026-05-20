@@ -1,5 +1,9 @@
 {:t {:footer "Australian BioCommons"
-     :header {:title "BioCommons REMS"}
+     :header {:title "ACDC REMS"}
      :login {:login [:img {:src "img/login.png" :height "50px"}]
              :intro [:div [:h5 "Dataset Permission Management"] [:p "REMS is a service for managing dataset permissions."]]
-             :intro2 "" :text ""}}}
+             :intro2 "" :text ""}
+     :email
+      {:application-submitted
+       {:message-to-handler
+    "Dear %:recipient%,\n\n%:applicant% has submitted a new application %:application-id% to accessresource(s) %:catalogue-items%.\n\nPlease review it here: %:application-url%.\n\nYou should reference the ACDC Data Review and Authorisation Checklist: https://unimelbcloud-my.sharepoint.com/:b:/r/personal/irene_hung_unimelb_edu_au/Documents/ACDC`%20Data`%20Governance`%20documents/Data`%20Governance`%20Policies`%20Final`%20Versions/Clean`%20Copies/ACDC`%20Data`%20Review`%20and`%20Authorisation`%20Checklist_V1.2.pdf?csf=1&web=1&e=ORSVdy"}}}}
