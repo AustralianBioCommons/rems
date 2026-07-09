@@ -1,10 +1,8 @@
 {:port 3000
- ;; Configure with deployed public URL so that OIDC callback can work
  :public-url "${PUBLIC_URL}"
  :database-url "postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}?user=${DB_USER}&password=${DB_PASSWORD_ENCODED}"
  :search-index-path "/tmp/rems-search-index"
  :authentication :oidc
- ;; Configure an OpenID Provider
  :oidc-metadata-url "${OIDC_METADATA_URL}"
  :oidc-client-id "${OIDC_CLIENT_ID}"
  :oidc-client-secret "${OIDC_CLIENT_SECRET}"
@@ -19,16 +17,25 @@
  :catalogue-is-public true
  :ga4gh-visa-private-key "/rems/keys/private-key.jwk"
  :ga4gh-visa-public-key "/rems/keys/public-key.jwk"
- :enable-cart true ; show shopping cart and allow bundling multiple resources into one application
+ :enable-cart true
  :enable-permissions-api true
  :enable-pdf-api true
- :enable-catalogue-tree false ; might be useful for a lot of items
+ :enable-catalogue-tree false
  :catalogue-tree-show-matching-parents true
  :enable-autosave true
- :enable-save-compaction true ; merge consecutive saves into one event
+ :enable-save-compaction true
  :extra-stylesheets {:root "./" :files ["/theme/styles.css"]}
  :smtp {:host "${SMTP_HOST}" :user "${SMTP_USER}" :pass "${SMTP_PASSWORD}" :port 587 :tls true}
  :mail-from "${SMTP_SENDER}"
  :theme-path "/rems/theme/theme.edn"
  :extra-pages-path "/rems/extra-pages"
+
+ ;; Notify requestor when application state changes so it can sync access to Arborist
+ :event-notification-targets
+ [{:url "${REQUESTOR_URL}/api/v1/rems-webhook"
+   :event-types [:application.event/approved
+                 :application.event/revoked
+                 :application.event/closed
+                 :application.event/expired]
+   :headers {"x-rems-webhook-secret" "${REMS_WEBHOOK_SECRET}"}}]
  }
